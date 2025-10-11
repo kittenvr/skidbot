@@ -13,6 +13,8 @@ public class UseItemPacket extends Packet {
 
 	public int hand;
 	public int sequence;//used for server response
+	public float pitch;
+	public float yaw;
 
 	public UseItemPacket() {
 
@@ -30,6 +32,8 @@ public class UseItemPacket extends Packet {
 	public void toBytes(MCOutputStream out) throws IOException {
 		out.writeVarInt(hand);
 		out.writeVarInt(sequence);
+		out.writeFloat(yaw);
+		out.writeFloat(pitch);
 	}
 
 	public void fromBytes(MCInputStream in) throws IOException {

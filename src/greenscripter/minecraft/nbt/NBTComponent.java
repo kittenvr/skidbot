@@ -202,7 +202,18 @@ public abstract class NBTComponent {
 			//			System.err.println(id);
 			//			throw new IOException("No wrapper compound on NBT");
 		}
-		return (NBTComponent) getType(id).read(in);
+		try {
+			return (NBTComponent) getType(id).read(in);
+		} catch (RuntimeException e) {
+			if (e.getMessage() != null && e.getMessage().startsWith("Invalid NBT id")) {
+				// Server sent invalid NBT data, return null instead of crashing
+				System.err.println("Received invalid NBT data from server, ignoring: " + e.getMessage());
+				return null;
+			} else {
+				// Re-throw other runtime exceptions
+				throw e;
+			}
+		}
 	}
 
 	public static void writeNBT(MCOutputStream out, NBTComponent c) throws IOException {

@@ -33,11 +33,11 @@ public class PathFinder {
 	public boolean[] noCollides = pathFindable;
 
 	public int pathRetainDistance = 10;
-	public int maxSpeed = 10;
+	public int maxSpeed = 5;
 	public int restrictRadius = -1;
 	public int longRangeHeight = 322;
 
-	public boolean infiniteVClipAllowed = true;
+	public boolean infiniteVClipAllowed = false;
 	public long timeout = 1000;
 	private AtomicBoolean running = new AtomicBoolean(false);
 

@@ -43,6 +43,7 @@ public class AsyncSwarmController {
 	public Consumer<ServerConnection> deathCallback = null;
 	public Consumer<ServerConnection> joinCallback = null;
 	public Runnable tickCallback = null;
+	public greenscripter.minecraft.commands.ConsoleCommandRegistry commandRegistry = null;
 
 	public ServerConnection ticking = null;
 
@@ -348,7 +349,7 @@ public class AsyncSwarmController {
 					min = Math.min(min, duration);
 					steps++;
 					if (System.currentTimeMillis() - lastLog > 1000) {
-						System.out.println("Servicing all clients took " + (duration) + " ms. min " + min + " max " + max + " average " + (System.currentTimeMillis() - lastLog - timeSkipped) / steps + " packets " + packets);
+						//System.out.println("Servicing all clients took " + (duration) + " ms. min " + min + " max " + max + " average " + (System.currentTimeMillis() - lastLog - timeSkipped) / steps + " packets " + packets);
 						packets = 0;
 						lastLog = System.currentTimeMillis();
 						max = 0;

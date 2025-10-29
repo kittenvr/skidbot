@@ -73,7 +73,7 @@ public class SwarmSearchTest {
 				min = Math.min(min, duration);
 				steps++;
 				if (System.currentTimeMillis() - lastLog > 1000) {
-					System.out.println("Servicing all clients took " + (duration) + " ms. min " + min + " max " + max + " average " + (System.currentTimeMillis() - lastLog - timeSkipped) / steps + " packets " + packets.get());
+					//System.out.println("Servicing all clients took " + (duration) + " ms. min " + min + " max " + max + " average " + (System.currentTimeMillis() - lastLog - timeSkipped) / steps + " packets " + packets.get());
 					packets.set(0);
 					lastLog = System.currentTimeMillis();
 					max = 0;

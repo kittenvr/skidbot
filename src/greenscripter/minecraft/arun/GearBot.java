@@ -1,7 +1,6 @@
 package greenscripter.minecraft.arun;
 
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -13,6 +12,7 @@ import com.google.gson.Gson;
 import greenscripter.minecraft.AccountList;
 import greenscripter.minecraft.AsyncSwarmController;
 import greenscripter.minecraft.ServerConnection;
+import greenscripter.minecraft.commands.ConsoleCommandRegistry;
 import greenscripter.minecraft.gameinfo.BlockStates;
 import greenscripter.minecraft.packet.c2s.play.ClientInfoPacket;
 import greenscripter.minecraft.play.data.PlayData;
@@ -22,6 +22,7 @@ import greenscripter.minecraft.play.handler.PlayTickHandler;
 import greenscripter.minecraft.play.handler.WorldPlayHandler;
 import greenscripter.minecraft.play.other.KillAuraHandler;
 import greenscripter.minecraft.utils.BlockBox;
+import greenscripter.minecraft.utils.ConsoleInputHandler;
 import greenscripter.minecraft.utils.Vector;
 import greenscripter.minecraft.world.PathFinder;
 import greenscripter.minecraft.world.TunnelPathFinder;
@@ -79,17 +80,25 @@ public class GearBot {
 		controller.start();
 		controller.connect(accounts.size(), 600);
 
-		try (Scanner scanner = new Scanner(System.in)) {
-			while (true) {
-				String line = scanner.nextLine();
-				handle(controller, line);
-			}
-		}
+		// Initialize the console command system
+		ConsoleCommandRegistry commandRegistry = new ConsoleCommandRegistry();
+		registerAllCommands(commandRegistry); // Register all available commands
 
+		// Start the console input handler
+		ConsoleInputHandler inputHandler = new ConsoleInputHandler(controller, commandRegistry);
+		inputHandler.start();
 	}
 
-	public static void handle(AsyncSwarmController controller, String line) {
-		controller.reconnectDead(controller.takeDead(controller.getDead()), 6000);
+	private static void registerAllCommands(ConsoleCommandRegistry commandRegistry) {
+		// Register all available console commands here
+		commandRegistry.register(new greenscripter.minecraft.commands.HelpCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.ExampleCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.ListBotsCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.GoToCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.GetOffhandCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.CountCommand());
+		// Note: AutoEatCommand requires an AutoEatHandler instance, so it's not registered here
+		// It would be registered in a context where the handler is available
 	}
 
 	public static void updateBox(int id, BlockBox box, String dimension, int color) {

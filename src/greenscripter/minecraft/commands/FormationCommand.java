@@ -47,8 +47,9 @@ public class FormationCommand {
 		String axis = "x";
 		int axisIdx = -1;
 		for (int i = 1; i < args.length; i++) {
-			if (args[i].toLowerCase().equals("x") || args[i].toLowerCase().equals("y") || args[i].toLowerCase().equals("z")) {
-				axis = args[i].toLowerCase();
+			String lowerArg = args[i].toLowerCase();
+			if (lowerArg.equals("x") || lowerArg.equals("y") || lowerArg.equals("z")) {
+				axis = lowerArg;
 				axisIdx = i;
 				break;
 			}

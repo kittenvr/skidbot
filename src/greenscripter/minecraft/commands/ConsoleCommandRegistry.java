@@ -41,82 +41,76 @@ public class ConsoleCommandRegistry {
 		return null;
 	}
 
-	public void executeConsoleCommand(AsyncSwarmController controller, String message) {
-		if (!message.startsWith("!")) return;
+	private String[] parseCommand(String message) {
+		if (!message.startsWith("!")) return null;
 
 		String command = message.substring(1);
-		String[] args = command.split(" ", -1); // Use -1 to keep empty trailing strings
+		return command.split(" ", -1);
+	}
+
+	private ConsoleCommand getCommandFromArgs(String[] args) {
+		if (args == null || args.length == 0) return null;
+		
 		String commandName = args[0];
-
-		String[] actualArgs = args;
-
 		ConsoleCommand cmd = get(commandName);
 		if (cmd == null) {
 			System.out.println("[System] Error: Command \"" + commandName + "\" doesn't exist");
-			return;
 		}
+		return cmd;
+	}
+
+	public void executeConsoleCommand(AsyncSwarmController controller, String message) {
+		String[] args = parseCommand(message);
+		if (args == null) return;
+
+		ConsoleCommand cmd = getCommandFromArgs(args);
+		if (cmd == null) return;
 
 		try {
 			// Execute command for all server connections
 			for (ServerConnection sc : controller.getAlive()) {
-				cmd.execute(sc, actualArgs, null, this);
+				cmd.execute(sc, args, null, this);
 			}
 		} catch (Exception e) {
-			System.out.println("[System] Error executing command " + commandName + ": " + e.getMessage());
+			System.out.println("[System] Error executing command " + args[0] + ": " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 	
 	public void executeTargetedConsoleCommand(AsyncSwarmController controller, String message, String targetUsername) {
-		if (!message.startsWith("!")) return;
+		String[] args = parseCommand(message);
+		if (args == null) return;
 
-		String command = message.substring(1);
-		String[] args = command.split(" ", -1); // Use -1 to keep empty trailing strings
-		String commandName = args[0];
-
-		String[] actualArgs = args;
-
-		ConsoleCommand cmd = get(commandName);
-		if (cmd == null) {
-			System.out.println("[System] Error: Command \"" + commandName + "\" doesn't exist");
-			return;
-		}
+		ConsoleCommand cmd = getCommandFromArgs(args);
+		if (cmd == null) return;
 
 		try {
 			// Execute command only for the targeted server connection
 			for (ServerConnection sc : controller.getAlive()) {
 				if (sc.name.equals(targetUsername)) {
-					cmd.execute(sc, actualArgs, targetUsername, this);
+					cmd.execute(sc, args, targetUsername, this);
 					return; // Found and executed on the target, exit
 				}
 			}
 			System.out.println("[System] Bot " + targetUsername + " not found");
 		} catch (Exception e) {
-			System.out.println("[System] Error executing command " + commandName + ": " + e.getMessage());
+			System.out.println("[System] Error executing command " + args[0] + ": " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 	
 	public void executeConsoleCommandForConnection(ServerConnection sc, String message) {
-		if (!message.startsWith("!")) return;
+		String[] args = parseCommand(message);
+		if (args == null) return;
 
-		String command = message.substring(1);
-		String[] args = command.split(" ", -1); // Use -1 to keep empty trailing strings
-		String commandName = args[0];
-
-		String[] actualArgs = args;
-
-		ConsoleCommand cmd = get(commandName);
-		if (cmd == null) {
-			System.out.println("[System] Error: Command \"" + commandName + "\" doesn't exist");
-			return;
-		}
+		ConsoleCommand cmd = getCommandFromArgs(args);
+		if (cmd == null) return;
 
 		try {
 			// Execute command for a specific server connection only
-			cmd.execute(sc, actualArgs, null, this);
+			cmd.execute(sc, args, null, this);
 		} catch (Exception e) {
-			System.out.println("[System] Error executing command " + commandName + ": " + e.getMessage());
+			System.out.println("[System] Error executing command " + args[0] + ": " + e.getMessage());
 			e.printStackTrace();
 		}
 	}

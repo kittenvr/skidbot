@@ -17,8 +17,13 @@ public class AutoLogHandler extends PlayHandler {
 	}
 	
 	public void tick(ServerConnection sc) {
-		// Check inventory to see if totem is still in offhand
+		// Request inventory update for desync checking
 		InventoryData inv = sc.getData(InventoryData.class);
+		if (inv != null) {
+			inv.rerequestInventory();
+		}
+
+		// Check inventory to see if totem is still in offhand
 		if (inv != null && inv.inv != null) {
 			var offhand = inv.inv.getOffhand();
 			int totemId = ItemId.get("minecraft:totem_of_undying");

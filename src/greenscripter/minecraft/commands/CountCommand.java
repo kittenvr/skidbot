@@ -1,11 +1,13 @@
 package greenscripter.minecraft.commands;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import greenscripter.minecraft.ServerConnection;
 import greenscripter.minecraft.play.data.InventoryData;
 import greenscripter.minecraft.play.inventory.ItemId;
+import greenscripter.minecraft.play.inventory.ItemUtils;
 import greenscripter.minecraft.play.inventory.Slot;
 
 public class CountCommand extends ConsoleCommand {
@@ -40,13 +42,8 @@ public class CountCommand extends ConsoleCommand {
 			return;
 		}
 
-		// Search through all slots in the inventory
-		int totalCount = 0;
-		for (Slot slot : inv.inv.slots) {
-			if (slot.present && slot.getItemId() != null && slot.getItemId().toLowerCase().contains(itemName)) {
-				totalCount += slot.itemCount;
-			}
-		}
+		// Use ItemUtils for efficient counting across all inventory slots
+		int totalCount = ItemUtils.countItems(itemName, inv.getInvIt());
 
 		if (totalCount > 0) {
 			System.out.println("[Bot " + serverConnection.name + "] Found " + totalCount + "x " + itemName);

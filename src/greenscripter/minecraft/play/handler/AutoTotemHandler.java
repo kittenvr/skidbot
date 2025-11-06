@@ -20,19 +20,18 @@ public class AutoTotemHandler extends PlayHandler {
     }
 
     public void tick(ServerConnection sc) throws IOException {
+        // Request inventory update for desync checking
+        InventoryData inv = sc.getData(InventoryData.class);
+        if (inv != null) {
+            inv.rerequestInventory();
+        }
+
         // Check if autototem is enabled
         AutoTotemData data = sc.getData(AutoTotemData.class);
         if (data != null && !data.enabled) {
             return; // Skip if disabled
         }
         
-        // Initialize join time when first tick happens
-        if (!initialized) {
-            joinTime = System.currentTimeMillis();
-            initialized = true;
-        }
-        
-        InventoryData inv = sc.getData(InventoryData.class);
         if (inv == null || inv.inv == null) return;
         
         var offhand = inv.inv.getOffhand();

@@ -7,7 +7,7 @@ import greenscripter.minecraft.ServerConnection;
 public class ListBotsCommand extends ConsoleCommand {
 
 	public ListBotsCommand() {
-		super("list", "!list - List all connected bots", List.of("bots"));
+		super("list", "!list - List all connected bots", List.of("bots"), true);
 	}
 
 	@Override

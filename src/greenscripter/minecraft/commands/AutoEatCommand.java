@@ -10,7 +10,7 @@ public class AutoEatCommand extends ConsoleCommand {
 	public static greenscripter.minecraft.play.handler.AutoEatHandler autoEatHandler;
 	
 	public AutoEatCommand() {
-		super("autoeat", "!autoeat - Toggle the auto-eat handler on/off", List.of("eat"));
+		super("autoeat", "!autoeat - Toggle the auto-eat handler on/off", List.of("eat"), true);
 	}
 
 	@Override

@@ -67,9 +67,17 @@ public class ConsoleCommandRegistry {
 		if (cmd == null) return;
 
 		try {
-			// Execute command for all server connections
-			for (ServerConnection sc : controller.getAlive()) {
-				cmd.execute(sc, args, null, this);
+			// Execute command for all server connections, or just one if singleBotOnly is true
+			if (cmd.singleBotOnly) {
+				// Execute on first available bot only
+				if (!controller.getAlive().isEmpty()) {
+					cmd.execute(controller.getAlive().get(0), args, null, this);
+				}
+			} else {
+				// Execute command for all server connections
+				for (ServerConnection sc : controller.getAlive()) {
+					cmd.execute(sc, args, null, this);
+				}
 			}
 		} catch (Exception e) {
 			System.out.println("[System] Error executing command " + args[0] + ": " + e.getMessage());

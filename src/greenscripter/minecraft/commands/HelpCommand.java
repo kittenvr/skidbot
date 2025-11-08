@@ -7,7 +7,7 @@ import greenscripter.minecraft.ServerConnection;
 public class HelpCommand extends ConsoleCommand {
 
 	public HelpCommand() {
-		super("help", "!help - Show this help message", java.util.List.of("h", "?"));
+		super("help", "!help - Show this help message", java.util.List.of("h", "?"), true);
 	}
 
 	@Override

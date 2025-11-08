@@ -12,11 +12,17 @@ public abstract class ConsoleCommand {
 	public final String name;
 	public final String usage;
 	public final List<String> aliases;
+	public final boolean singleBotOnly;
 
 	public ConsoleCommand(String name, String usage, List<String> aliases) {
+		this(name, usage, aliases, false);
+	}
+
+	public ConsoleCommand(String name, String usage, List<String> aliases, boolean singleBotOnly) {
 		this.name = name;
 		this.usage = usage;
 		this.aliases = aliases != null ? aliases : List.of();
+		this.singleBotOnly = singleBotOnly;
 	}
 
 	/**

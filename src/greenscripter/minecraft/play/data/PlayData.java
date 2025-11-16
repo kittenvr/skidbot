@@ -21,6 +21,7 @@ public interface PlayData {
 			this.put(InventoryData.class, InventoryData::new);
 			this.put(PingIDData.class, PingIDData::new);
 			this.put(StatisticsData.class, StatisticsData::new);
+			this.put(TaskData.class, TaskData::new);
 		}
 	}
 

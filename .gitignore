@@ -6,3 +6,18 @@ bin/
 test.dat
 testout.dat
 accountlist.json
+
+# IDE files
+.idea/
+*.iml
+
+# Build artifacts
+compiled/
+out/
+
+# Log files
+log.txt
+
+# Documentation files (if not needed in repo)
+AGENTS.md
+QWEN.md

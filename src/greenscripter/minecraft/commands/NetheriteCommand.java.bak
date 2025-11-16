@@ -1,0 +1,56 @@
+package greenscripter.minecraft.commands;
+
+import java.util.List;
+
+import greenscripter.minecraft.ServerConnection;
+import greenscripter.minecraft.play.data.InventoryData;
+import greenscripter.minecraft.play.inventory.ItemUtils;
+import greenscripter.minecraft.play.inventory.PlayerInventoryScreen;
+import greenscripter.minecraft.play.inventory.Slot;
+
+public class NetheriteCommand extends ConsoleCommand {
+
+	public NetheriteCommand() {
+		super("netherite", "!netherite - Equips netherite gear (pickaxe, sword, helmet, chestplate, leggings, boots)", List.of("netheritegear"));
+	}
+
+	@Override
+	public void execute(ServerConnection serverConnection, String[] args, String targetUsername, ConsoleCommandRegistry registry) {
+		// If a target username was specified, only apply to that specific bot
+		if (targetUsername != null && !serverConnection.name.equals(targetUsername)) {
+			return;
+		}
+
+		InventoryData inv = serverConnection.getData(InventoryData.class);
+		if (inv == null) {
+			System.out.println("[Bot " + serverConnection.name + "] Inventory data not available");
+			return;
+		}
+
+		System.out.println("[Bot " + serverConnection.name + "] Equipping netherite gear...");
+
+		// Look for netherite gear pieces in inventory and shift-click them to equip
+		equipGearPiece(serverConnection, "minecraft:netherite_helmet", inv);
+		equipGearPiece(serverConnection, "minecraft:netherite_chestplate", inv);
+		equipGearPiece(serverConnection, "minecraft:netherite_leggings", inv);
+		equipGearPiece(serverConnection, "minecraft:netherite_boots", inv);
+		equipGearPiece(serverConnection, "minecraft:netherite_sword", inv);
+		equipGearPiece(serverConnection, "minecraft:netherite_pickaxe", inv);
+
+		System.out.println("[Bot " + serverConnection.name + "] Netherite gear equip attempt completed");
+	}
+
+	private void equipGearPiece(ServerConnection serverConnection, String itemId, InventoryData inv) {
+		// Look for the gear piece in the player inventory
+		PlayerInventoryScreen playerInv = inv.inv;
+		
+		for (int i = 0; i < playerInv.slots.length; i++) {
+			Slot slot = playerInv.slots[i];
+			if (slot.present && slot.getItemId() != null && slot.getItemId().equals(itemId)) {
+				System.out.println("[Bot " + serverConnection.name + "] Found " + itemId + " in slot " + i + ", attempting to equip");
+				inv.shiftClickSlot(slot);
+				return; // Only equip one piece at a time to avoid conflicts
+			}
+		}
+	}
+}

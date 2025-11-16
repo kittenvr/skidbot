@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.commands;
 
 import java.util.List;
@@ -65,4 +66,4 @@ public class StackedCommand extends ConsoleCommand {
 
 		System.out.println("[Bot " + serverConnection.name + "] Diamond gear collection and equipment task chain initiated. Check status with task system.");
 	}
-}
+}*/

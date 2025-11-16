@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.Comparator;
@@ -147,4 +148,4 @@ public class TaskStateMachine extends greenscripter.minecraft.play.statemachine.
 	public boolean hasActiveTaskState() {
 		return hasActiveState;
 	}
-}
+}*/

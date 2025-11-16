@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -45,4 +46,4 @@ public abstract class Task {
 		}
 		return 0;
 	}
-}
+}*/

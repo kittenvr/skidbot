@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.ArrayList;
@@ -77,4 +78,4 @@ public class TaskChain extends Task {
 		
 		return this; // Continue with the chain
 	}
-}
+}*/

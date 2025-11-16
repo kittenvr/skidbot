@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -38,4 +39,4 @@ public abstract class ResourceTask extends Task {
 	public final Task onTick(ServerConnection sc) {
 		return onResourceTick(sc);
 	}
-}
+}*/

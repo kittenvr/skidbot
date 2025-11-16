@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -115,4 +116,4 @@ public class EquipArmorTask extends Task {
 			}
 		}
 	}
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -29,4 +30,4 @@ public class ExploreState extends PlayerState {
 			pos.setPosRotation(sc, new Vector(explorationX, pos.pos.y, explorationZ), pos.pitch, pos.yaw);
 		}
 	}
-}
+}*/

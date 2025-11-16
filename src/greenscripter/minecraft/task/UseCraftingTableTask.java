@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -156,4 +157,4 @@ public class UseCraftingTableTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "UseCraftingTableTask";
 	}
-}
+}*/

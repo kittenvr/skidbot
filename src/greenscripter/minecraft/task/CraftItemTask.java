@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.Arrays;
@@ -180,4 +181,4 @@ public class CraftItemTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "CraftItemTask";
 	}
-}
+}*/

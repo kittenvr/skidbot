@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import greenscripter.minecraft.commands.AutoEatCommand;
 import greenscripter.minecraft.commands.AutoTotemCommand;
 import greenscripter.minecraft.commands.ConsoleCommandRegistry;
-import greenscripter.minecraft.commands.StackedCommand;
+//import greenscripter.minecraft.commands.StackedCommand;
 import greenscripter.minecraft.packet.c2s.play.ClientInfoPacket;
 import greenscripter.minecraft.play.data.PlayData;
 import greenscripter.minecraft.play.data.WorldData;
@@ -97,8 +97,10 @@ public class MinecraftBot {
 		commandRegistry.register(new greenscripter.minecraft.commands.AutoTotemCommand());
 		commandRegistry.register(new greenscripter.minecraft.commands.GetOffhandCommand());
 		commandRegistry.register(new greenscripter.minecraft.commands.CountCommand());
-		commandRegistry.register(new greenscripter.minecraft.commands.GetCommand());
-		commandRegistry.register(new greenscripter.minecraft.commands.StackedCommand());
+		//commandRegistry.register(new greenscripter.minecraft.commands.GetCommand());
+		//commandRegistry.register(new greenscripter.minecraft.commands.StackedCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.NukerCommand());
+		commandRegistry.register(new greenscripter.minecraft.commands.BreakBlockCommand());
 	}
 	
 	static class MinecraftBotGlobalData implements PlayData {

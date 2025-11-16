@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.play.data;
 
 import greenscripter.minecraft.ServerConnection;
@@ -33,4 +34,4 @@ public class TaskData implements PlayData {
 	public TaskStateMachine getTaskStateMachine() {
 		return taskStateMachine;
 	}
-}
+}*/

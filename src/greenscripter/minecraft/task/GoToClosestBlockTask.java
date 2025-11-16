@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.Comparator;
@@ -112,7 +113,9 @@ public class GoToClosestBlockTask extends Task {
 				);
 				
 				// When pathfinding is complete, this task should continue
-				pathState.travelComplete = e -> { /* Do nothing, task will continue on next tick */ };
+				pathState.travelComplete = e -> { */
+/* Do nothing, task will continue on next tick *//*
+ };
 				pathState.travelFailed = e -> {
 					setDebugState("Pathfinding failed, target may have been removed");
 					targetPosition = null; // Reset to search again
@@ -145,4 +148,4 @@ public class GoToClosestBlockTask extends Task {
 	public String toDebugString() {
 		return "GoToClosestBlockTask: " + String.join(", ", blockIds);
 	}
-}
+}*/

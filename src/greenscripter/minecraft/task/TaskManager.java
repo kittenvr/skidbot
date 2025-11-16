@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -75,4 +76,4 @@ public class TaskManager {
 		}
 		return currentTask.getDebugState();
 	}
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -148,4 +149,4 @@ public class CollectResourceTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "CollectResourceTask";
 	}
-}
+}*/

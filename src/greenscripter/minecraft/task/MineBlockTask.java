@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.ArrayList;
@@ -139,4 +140,4 @@ public class MineBlockTask extends ResourceTask {
 	public ItemTarget getTarget() {
 		return target;
 	}
-}
+}*/

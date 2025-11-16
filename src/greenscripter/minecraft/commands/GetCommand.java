@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.commands;
 
 import java.util.Arrays;
@@ -103,4 +104,4 @@ public class GetCommand extends ConsoleCommand {
 
 		System.out.println("[Bot " + serverConnection.name + "] Get task initiated. Check status with task system.");
 	}
-}
+}*/

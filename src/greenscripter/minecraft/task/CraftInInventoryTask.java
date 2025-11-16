@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.List;
@@ -298,4 +299,4 @@ public class CraftInInventoryTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "CraftInInventoryTask";
 	}
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.ArrayList;
@@ -136,4 +137,4 @@ public class AdvancedSmeltTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "AdvancedSmeltTask";
 	}
-}
+}*/

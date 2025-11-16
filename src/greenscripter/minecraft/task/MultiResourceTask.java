@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.ArrayList;
@@ -114,4 +115,4 @@ public class MultiResourceTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "MultiResourceTask";
 	}
-}
+}*/

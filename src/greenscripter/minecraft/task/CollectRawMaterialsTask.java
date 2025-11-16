@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import greenscripter.minecraft.ServerConnection;
@@ -55,4 +56,4 @@ public class CollectRawMaterialsTask extends Task {
 			return this; // Continue waiting
 		}
 	}
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package greenscripter.minecraft.task;
 
 import java.util.Arrays;
@@ -151,4 +152,4 @@ public class CollectItemTask extends ResourceTask {
 	public String toDebugStringName() {
 		return "CollectItemTask";
 	}
-}
+}*/
